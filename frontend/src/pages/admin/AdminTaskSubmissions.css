@@ -1,0 +1,603 @@
+/* =========================================================
+   ADMIN TASK SUBMISSIONS PAGE
+========================================================= */
+
+.admin-submissions-page {
+    min-height: 100%;
+    padding: 32px;
+    background: #f8fafc;
+    color: #0f172a;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-submissions-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.admin-submissions-label {
+    margin: 0 0 8px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.admin-submissions-header h1 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.admin-submissions-header > div:first-child > p:last-child {
+    margin: 10px 0 0;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SUBMISSION COUNT
+========================================================= */
+
+.submission-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 15px;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.submissions-error {
+    padding: 28px;
+    border: 1px solid #fecaca;
+    border-radius: 14px;
+    background: #fef2f2;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+}
+
+.submissions-error h2 {
+    margin: 0 0 8px;
+    color: #991b1b;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.submissions-error p {
+    margin: 0 0 18px;
+    color: #b91c1c;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.submissions-error button {
+    height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 8px;
+    background: #dc2626;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.submissions-error button:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-submissions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 360px;
+    padding: 50px 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+.empty-submission-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.empty-submissions h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.empty-submissions p {
+    max-width: 420px;
+    margin: 9px 0 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SUBMISSIONS LIST
+========================================================= */
+
+.submissions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =========================================================
+   SUBMISSION CARD
+========================================================= */
+
+.submission-card {
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 7px 26px rgba(15, 23, 42, 0.05);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.submission-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 32px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   TOP SECTION
+========================================================= */
+
+.submission-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.submission-label {
+    margin: 0 0 6px;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.submission-top h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.submitted-by {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.submitted-by strong {
+    color: #334155;
+    font-weight: 700;
+}
+
+/* =========================================================
+   REVIEW STATUS
+========================================================= */
+
+.review-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 82px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.status-pending {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.status-approved {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.status-rejected {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.submission-description {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 11px;
+    background: #f8fafc;
+}
+
+.submission-description strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.submission-description p {
+    margin: 0;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   FILE
+========================================================= */
+
+.submission-file {
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.submission-file a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.submission-file a:hover {
+    border-color: #93c5fd;
+    background: #dbeafe;
+    color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   REVIEW SECTION
+========================================================= */
+
+.review-section {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.review-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.review-section textarea {
+    display: block;
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #0f172a;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    outline: none;
+    resize: vertical;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.review-section textarea::placeholder {
+    color: #94a3b8;
+}
+
+.review-section textarea:hover {
+    border-color: #94a3b8;
+}
+
+.review-section textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.review-section textarea:disabled {
+    background: #f8fafc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* =========================================================
+   REVIEW ACTIONS
+========================================================= */
+
+.review-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.approve-button,
+.reject-button {
+    min-width: 110px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.approve-button {
+    border: 1px solid #16a34a;
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.approve-button:hover:not(:disabled) {
+    border-color: #15803d;
+    background: #15803d;
+    transform: translateY(-1px);
+}
+
+.reject-button {
+    border: 1px solid #dc2626;
+    background: #ffffff;
+    color: #dc2626;
+}
+
+.reject-button:hover:not(:disabled) {
+    border-color: #b91c1c;
+    background: #fef2f2;
+    color: #b91c1c;
+    transform: translateY(-1px);
+}
+
+.approve-button:disabled,
+.reject-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =========================================================
+   REVIEW RESULT
+========================================================= */
+
+.review-result {
+    margin-top: 22px;
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 11px;
+    background: #f8fafc;
+}
+
+.review-result strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.review-result p {
+    margin: 0 0 10px;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.review-result small {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* =========================================================
+   APPROVED CARD
+========================================================= */
+
+.submission-card:has(.status-approved) {
+    border-left: 4px solid #16a34a;
+}
+
+/* =========================================================
+   REJECTED CARD
+========================================================= */
+
+.submission-card:has(.status-rejected) {
+    border-left: 4px solid #dc2626;
+}
+
+/* =========================================================
+   PENDING CARD
+========================================================= */
+
+.submission-card:has(.status-pending) {
+    border-left: 4px solid #f97316;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .admin-submissions-page {
+        padding: 24px;
+    }
+
+    .submission-card {
+        padding: 20px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+    .admin-submissions-page {
+        padding: 18px;
+    }
+
+    .admin-submissions-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .admin-submissions-header h1 {
+        font-size: 26px;
+    }
+
+    .submission-count {
+        align-self: flex-start;
+    }
+
+    .submission-top {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .review-status {
+        align-self: flex-start;
+    }
+
+    .review-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .approve-button,
+    .reject-button {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+    .admin-submissions-page {
+        padding: 14px;
+    }
+
+    .admin-submissions-header h1 {
+        font-size: 23px;
+    }
+
+    .admin-submissions-header > div:first-child > p:last-child {
+        font-size: 14px;
+    }
+
+    .submission-card {
+        padding: 16px;
+        border-radius: 13px;
+    }
+
+    .submission-top h2 {
+        font-size: 18px;
+    }
+
+    .submission-description {
+        padding: 14px;
+    }
+
+    .empty-submissions {
+        min-height: 300px;
+        padding: 40px 18px;
+    }
+}

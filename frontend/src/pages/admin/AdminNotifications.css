@@ -1,0 +1,350 @@
+/* =========================================================
+   ADMIN NOTIFICATIONS PAGE
+========================================================= */
+
+.admin-notifications-page {
+    min-height: 100%;
+    padding: 32px;
+    background: #f8fafc;
+    color: #0f172a;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-notifications-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.admin-notifications-header > div {
+    min-width: 0;
+}
+
+.admin-notifications-label {
+    margin: 0 0 8px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.admin-notifications-header h1 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.admin-notifications-header p:last-child {
+    margin: 10px 0 0;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.notification-form-card {
+    width: 100%;
+    max-width: 850px;
+    padding: 28px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.notification-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    height: 46px;
+    padding: 0 13px;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    padding: 13px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* =========================================================
+   INPUT HOVER
+========================================================= */
+
+.form-group input:hover:not(:disabled),
+.form-group select:hover:not(:disabled),
+.form-group textarea:hover:not(:disabled) {
+    border-color: #94a3b8;
+}
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* =========================================================
+   DISABLED INPUTS
+========================================================= */
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+    background: #f8fafc;
+    color: #64748b;
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select:disabled {
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.notification-error {
+    padding: 13px 15px;
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.notification-success {
+    padding: 13px 15px;
+    border: 1px solid #bbf7d0;
+    border-radius: 9px;
+    background: #f0fdf4;
+    color: #15803d;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.notification-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 2px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.notification-submit-button {
+    min-width: 170px;
+    height: 44px;
+    padding: 0 20px;
+    border: 1px solid #2563eb;
+    border-radius: 9px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.notification-submit-button:hover:not(:disabled) {
+    border-color: #1d4ed8;
+    background: #1d4ed8;
+    box-shadow: 0 7px 18px rgba(37, 99, 235, 0.24);
+    transform: translateY(-1px);
+}
+
+.notification-submit-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.notification-submit-button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline-offset: 2px;
+}
+
+.notification-submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .admin-notifications-page {
+        padding: 24px;
+    }
+
+    .notification-form-card {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+    .admin-notifications-page {
+        padding: 18px;
+    }
+
+    .admin-notifications-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .admin-notifications-header h1 {
+        font-size: 27px;
+    }
+
+    .notification-form-card {
+        padding: 20px;
+        border-radius: 13px;
+    }
+
+    .notification-form {
+        gap: 19px;
+    }
+
+    .notification-form-actions {
+        align-items: stretch;
+    }
+
+    .notification-submit-button {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+    .admin-notifications-page {
+        padding: 14px;
+    }
+
+    .admin-notifications-header h1 {
+        font-size: 23px;
+    }
+
+    .admin-notifications-header p:last-child {
+        font-size: 14px;
+    }
+
+    .notification-form-card {
+        padding: 16px;
+    }
+
+    .form-group input,
+    .form-group select {
+        height: 44px;
+    }
+
+    .form-group textarea {
+        min-height: 130px;
+    }
+
+    .notification-submit-button {
+        height: 43px;
+    }
+}

@@ -1,0 +1,172 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 260px;
+  height: 100vh;
+
+  padding: 24px 16px;
+
+  background: #0f172a;
+  color: #ffffff;
+
+  box-shadow: 4px 0 20px rgba(15, 23, 42, 0.08);
+
+  transition: transform 0.3s ease;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 4px 12px 28px;
+
+  border-bottom: 1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-brand h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sidebar-brand span {
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+.sidebar-navigation {
+  flex: 1;
+
+  padding-top: 24px;
+}
+
+.navigation-title {
+  margin: 0 12px 10px;
+
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-link,
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 44px;
+
+  margin-bottom: 5px;
+  padding: 0 12px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #cbd5e1;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.sidebar-link:hover,
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+.sidebar-link-active {
+  background: #2563eb;
+  color: #ffffff;
+
+  box-shadow: 0 6px 16px
+    rgba(37, 99, 235, 0.25);
+}
+
+.sidebar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+
+  font-size: 16px;
+}
+
+.sidebar-footer {
+  padding-top: 16px;
+
+  border-top: 1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+.logout-button {
+  margin: 0;
+
+  color: #fca5a5;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    display: block;
+
+    background: rgba(15, 23, 42, 0.45);
+  }
+}
