@@ -32,7 +32,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    ".onrender.com",
+    "https://gamani-ems.onrender.com/login",
 ]
 
 
@@ -101,7 +101,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 
     # Replace this with your actual Render frontend URL
-    "https://YOUR-FRONTEND-URL.onrender.com",
+    "https://gamani-ems.onrender.com/login",
 ]
 
 
@@ -113,7 +113,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
 
     # Replace this with your actual Render frontend URL
-    "https://YOUR-FRONTEND-URL.onrender.com",
+    "https://gamani-ems.onrender.com/login",
 ]
 
 
