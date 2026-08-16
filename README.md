@@ -4,7 +4,7 @@
 
 A production-oriented **Employee Work Management System** built using **Django REST Framework, React.js, MySQL, JWT Authentication, and Render**.
 
-The system is designed to help organizations manage employees, tasks, attendance, breaks, salary, work submissions, reviews, notifications, reports, and employee performance from a centralized platform.
+The system is designed to help organizations manage employees, tasks, attendance, salary, work submissions, reviews, notifications, reports, and employee performance from a centralized platform.
 
 ---
 
