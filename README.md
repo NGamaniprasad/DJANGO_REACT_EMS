@@ -46,7 +46,6 @@ The main objectives of the system are:
 - Assign and manage tasks
 - Track task progress
 - Manage attendance
-- Track employee breaks
 - Calculate working hours
 - Manage salary information
 - Manage performance bonuses
@@ -98,9 +97,6 @@ Admin can:
 - Reject completed work
 - Send feedback
 - Send notifications
-- View reports
-- View dashboard charts
-- View employee performance
 
 ---
 
@@ -127,11 +123,8 @@ Employees can:
 - Change password
 - Clock in
 - Clock out
-- Start break
-- End break
 - View today's working hours
 - View attendance history
-- View break history
 - View assigned tasks
 - Update task status
 - Upload completed work
@@ -517,25 +510,10 @@ employee + date UNIQUE
 
 This prevents duplicate attendance records for the same employee and date.
 
-33. Break Table
 
-Example:
 
-Break
-----------------------------
-id
-attendance_id FK
-employee_id FK
-break_start
-break_end
-duration_seconds
-created_at
-updated_at
 
-Relationship:
-
-Attendance 1 ---- N Break
-34. Salary Table
+33. Salary Table
 
 Example:
 
@@ -558,7 +536,7 @@ updated_at
 Recommended constraint:
 
 employee + month + year UNIQUE
-35. Notification Table
+34. Notification Table
 
 Example:
 
@@ -597,7 +575,7 @@ created_at
        |
        v
   NOTIFICATION
-37. API Architecture
+36. API Architecture
 
 All backend APIs should be RESTful.
 
@@ -616,7 +594,7 @@ Example:
 /api/notifications/
 /api/task-submissions/
 /api/reports/
-38. Authentication APIs
+37. Authentication APIs
 Login
 POST /api/auth/login/
 
@@ -633,7 +611,7 @@ Response:
     "access": "JWT_ACCESS_TOKEN",
     "refresh": "JWT_REFRESH_TOKEN"
 }
-39. Refresh Token
+38. Refresh Token
 POST /api/auth/token/refresh/
 
 Request:
@@ -641,7 +619,7 @@ Request:
 {
     "refresh": "JWT_REFRESH_TOKEN"
 }
-40. Employee APIs
+39. Employee APIs
 List Employees
 GET /api/employees/
 Create Employee
@@ -654,14 +632,14 @@ Partial Update
 PATCH /api/employees/{id}/
 Delete Employee
 DELETE /api/employees/{id}/
-41. Task APIs
+40. Task APIs
 GET     /api/tasks/
 POST    /api/tasks/
 GET     /api/tasks/{id}/
 PUT     /api/tasks/{id}/
 PATCH   /api/tasks/{id}/
 DELETE  /api/tasks/{id}/
-42. Task Submission APIs
+41. Task Submission APIs
 GET     /api/task-submissions/
 POST    /api/task-submissions/
 GET     /api/task-submissions/{id}/
@@ -675,7 +653,7 @@ Example:
     "review_status": "APPROVED",
     "feedback": "Excellent work."
 }
-43. Attendance APIs
+42. Attendance APIs
 
 Example:
 
@@ -685,21 +663,14 @@ POST /api/attendance/clock-out/
 GET  /api/attendance/today/
 GET  /api/attendance/history/
 GET  /api/attendance/monthly/
-44. Break APIs
 
-Example:
-
-GET  /api/breaks/
-POST /api/breaks/start/
-POST /api/breaks/end/
-GET  /api/breaks/history/
-45. Salary APIs
+43. Salary APIs
 GET     /api/salaries/
 POST    /api/salaries/
 GET     /api/salaries/{id}/
 PATCH   /api/salaries/{id}/
 DELETE  /api/salaries/{id}/
-46. Notification APIs
+44. Notification APIs
 GET  /api/notifications/
 POST /api/notifications/
 PATCH /api/notifications/{id}/
@@ -708,7 +679,7 @@ Admin creates notifications.
 
 Employees receive notifications.
 
-47. Report APIs
+45. Report APIs
 
 Example:
 
@@ -721,7 +692,7 @@ GET /api/reports/performance/
 CSV:
 
 GET /api/reports/attendance/export/
-48. Authentication
+46. Authentication
 
 JWT authentication should be implemented using:
 
@@ -748,7 +719,7 @@ Authorization: Bearer <token>
   |
   v
 Django validates JWT
-49. Axios Configuration
+47. Axios Configuration
 
 The frontend should use a centralized Axios client.
 
@@ -776,7 +747,7 @@ apiClient.interceptors.request.use(
 );
 
 export default apiClient;
-50. JWT 401 Handling
+48. JWT 401 Handling
 
 HTTP 401 means:
 
@@ -806,7 +777,7 @@ Try Refresh Token
    +---- Success ----> Retry Request
    |
    +---- Failure ----> Logout
-51. React Authentication Context
+49. React Authentication Context
 
 Use Context API for authentication.
 
@@ -825,7 +796,7 @@ Store refresh token
 Store user
 Determine role
 Protect routes
-52. Protected Routes
+50. Protected Routes
 
 The application should have protected routes.
 
@@ -852,7 +823,7 @@ Example:
 
 Unauthenticated users should not access protected pages.
 
-53. Role-Based Routing
+51. Role-Based Routing
 
 Admin:
 
@@ -874,7 +845,7 @@ Employees should not access Admin pages.
 
 Admins should not use employee-only routes unless explicitly allowed.
 
-54. Home Page
+52. Home Page
 
 The public home page should represent:
 
@@ -896,7 +867,7 @@ Main buttons:
 
 Admin Login
 Employee Login
-55. Login System
+53. Login System
 
 The login page should allow users to authenticate.
 
@@ -921,7 +892,7 @@ After successful login:
 
 ADMIN     -> Admin Dashboard
 EMPLOYEE  -> Employee Dashboard
-56. Admin Sidebar
+54. Admin Sidebar
 
 Admin sidebar should include:
 
@@ -939,7 +910,7 @@ Profile
 Settings
 
 Logout
-57. Employee Sidebar
+55. Employee Sidebar
 
 Employee sidebar:
 
@@ -954,7 +925,7 @@ Profile
 Settings
 
 Logout
-58. UI Design
+56. UI Design
 
 The UI should have a premium professional enterprise design.
 
@@ -974,7 +945,7 @@ Loading indicators
 Error messages
 Empty states
 Responsive layouts
-59. Responsive Design
+57. Responsive Design
 
 The application must support:
 
@@ -993,7 +964,7 @@ Collapsible sidebar
 
 Mobile:
 Mobile navigation
-60. Search
+58. Search
 
 Search should be available for major tables.
 
@@ -1008,7 +979,7 @@ Notification search
 Example:
 
 GET /api/employees/?search=ramu
-61. Filtering
+59. Filtering
 
 Use Django REST Framework filtering.
 
@@ -1021,7 +992,7 @@ Examples:
 /api/employees/?is_active=true
 
 /api/attendance/?month=8
-62. Pagination
+60. Pagination
 
 APIs should use pagination.
 
@@ -1036,7 +1007,7 @@ Example:
 
 Frontend should support paginated results.
 
-63. Permissions
+61. Permissions
 
 Backend permissions must enforce authorization.
 
@@ -1067,7 +1038,7 @@ View own notifications
 
 Employees must not be able to modify another employee's records.
 
-64. Security
+62. Security
 
 The system should implement:
 
@@ -1094,7 +1065,7 @@ API_KEYS
 
 to Git.
 
-65. Environment Variables
+63. Environment Variables
 
 Backend .env:
 
@@ -1116,7 +1087,7 @@ VITE_API_BASE_URL=http://127.0.0.1:8000/api
 
 Production values should be configured through Render environment variables.
 
-66. Backend Installation
+64. Backend Installation
 
 Navigate to backend:
 
@@ -1147,7 +1118,7 @@ pip install python-dotenv
 Create requirements:
 
 pip freeze > requirements.txt
-67. Create Django Project
+65. Create Django Project
 django-admin startproject config .
 
 Create applications:
@@ -1156,11 +1127,10 @@ python manage.py startapp accounts
 python manage.py startapp employees
 python manage.py startapp tasks
 python manage.py startapp attendance
-python manage.py startapp breaks
 python manage.py startapp salaries
 python manage.py startapp notifications
 python manage.py startapp reports
-68. Database Setup
+66. Database Setup
 
 Create MySQL database:
 
@@ -1190,7 +1160,7 @@ Run migrations:
 
 python manage.py makemigrations
 python manage.py migrate
-69. Create Admin
+67. Create Admin
 python manage.py createsuperuser
 
 Enter:
@@ -1206,7 +1176,7 @@ python manage.py runserver
 Backend:
 
 http://127.0.0.1:8000/
-70. Frontend Installation
+68. Frontend Installation
 
 Navigate to frontend:
 
@@ -1235,7 +1205,7 @@ npm run dev
 Frontend:
 
 http://localhost:5173
-71. Recommended React Structure
+69. Recommended React Structure
 src/
 │
 ├── api/
@@ -1288,7 +1258,7 @@ src/
 │
 ├── App.jsx
 └── main.jsx
-72. Git Structure
+70. Git Structure
 
 Initialize Git:
 
@@ -1313,7 +1283,7 @@ feature/attendance
 feature/salary
 feature/reports
 feature/dashboard
-73. Git Ignore
+71. Git Ignore
 
 Never commit:
 
@@ -1357,7 +1327,7 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
-74. Development Phases
+72. Development Phases
 
 The project should be developed in the following exact order.
 
@@ -1465,10 +1435,8 @@ Monthly attendance
 Working hours
 Attendance history
 CSV export
-75. Break Management
 
-
-76. Salary Module
+73. Salary Module
 
 Tasks:
 
@@ -1480,7 +1448,7 @@ Net salary
 Payment status
 Salary history
 Employee salary view
-77. Reports
+74. Reports
 
 Tasks:
 
@@ -1491,7 +1459,7 @@ Salary report
 CSV export
 Search
 Filtering
-78. Dashboard Charts
+75. Dashboard Charts
 
 Recommended charts:
 
@@ -1508,7 +1476,7 @@ Recharts
 Install:
 
 npm install recharts
-79. Error Handling
+76. Error Handling
 
 Backend should return meaningful errors.
 
@@ -1528,7 +1496,7 @@ Validation:
 
 Frontend should display readable messages.
 
-80. HTTP Status Codes
+77. HTTP Status Codes
 
 Use standard HTTP status codes.
 
@@ -1552,7 +1520,7 @@ Meaning:
 404 = Resource does not exist
 
 400 = Invalid request
-81. File Upload
+78. File Upload
 
 Completed work can support PDF uploads.
 
@@ -1568,7 +1536,7 @@ Files should be stored using Django media storage.
 
 For Render production, use persistent/external object storage when required rather than relying on ephemeral local filesystem storage.
 
-82. Production Configuration
+79. Production Configuration
 
 Before deployment:
 
@@ -1586,7 +1554,7 @@ HTTPS
 Environment variables
 Production database
 Logging
-83. Render Deployment
+80. Render Deployment
 
 The project should be deployable on Render.
 
@@ -1613,7 +1581,7 @@ python manage.py collectstatic --noinput
 Production server:
 
 gunicorn config.wsgi:application
-84. Render Backend Environment Variables
+81. Render Backend Environment Variables
 
 Example:
 
@@ -1630,7 +1598,7 @@ CORS_ALLOWED_ORIGINS
 
 Do not hard-code credentials.
 
-85. Render Frontend
+82. Render Frontend
 
 Build:
 
@@ -1646,7 +1614,7 @@ The frontend should use the production API URL.
 Example:
 
 VITE_API_BASE_URL=https://your-backend-domain/api
-86. CORS
+83. CORS
 
 Development:
 
@@ -1658,7 +1626,7 @@ https://your-frontend-domain
 
 Only trusted origins should be allowed.
 
-87. Production Database
+84. Production Database
 
 The production database must not use:
 
@@ -1670,7 +1638,7 @@ MySQL
 
 The production database should be configured using environment variables.
 
-88. API Security
+85. API Security
 
 All sensitive APIs must require authentication.
 
@@ -1682,7 +1650,7 @@ must not expose every employee's salary to employees.
 
 The backend must filter the queryset based on the authenticated user's role.
 
-89. Important Authorization Rule
+86. Important Authorization Rule
 
 Never depend only on frontend route protection.
 
@@ -1702,13 +1670,12 @@ Backend permissions
 
 Both are required.
 
-90. Employee Data Isolation
+87. Employee Data Isolation
 
 An employee must only access their own:
 
 Tasks
 Attendance
-Breaks
 Salary
 Notifications
 Submissions
@@ -1726,7 +1693,7 @@ Employee B
 
 Employee A must never receive Employee B's private records.
 
-91. Admin Data Access
+88. Admin Data Access
 
 Admin can access organization-level data.
 
@@ -1740,7 +1707,7 @@ All Salaries
 All Submissions
 All Notifications
 All Reports
-92. Database Indexing
+89. Database Indexing
 
 Indexes should be added to frequently queried fields.
 
@@ -1759,7 +1726,7 @@ Salary.year
 Salary.month
 Notification.recipient
 Notification.is_read
-93. Database Constraints
+90. Database Constraints
 
 Recommended constraints:
 
@@ -1778,7 +1745,7 @@ Task -> User
 Attendance -> Employee
 Break -> Attendance
 Salary -> Employee
-94. Performance
+91. Performance
 
 Production performance should consider:
 
@@ -1791,7 +1758,7 @@ Caching where necessary
 Efficient serializers
 Avoiding N+1 queries
 Lazy loading frontend components
-95. Backend Query Optimization
+92. Backend Query Optimization
 
 Example:
 
@@ -1808,7 +1775,7 @@ Employee.objects.prefetch_related(
 
 This reduces unnecessary database queries.
 
-96. API Pagination
+93. API Pagination
 
 Never return thousands of records in one request.
 
@@ -1820,7 +1787,7 @@ page_size
 Example:
 
 /api/employees/?page=2&page_size=20
-97. Frontend Loading States
+94. Frontend Loading States
 
 Every API-based page should provide:
 
@@ -1838,7 +1805,7 @@ No employees found.
 Unable to load employees.
 
 Employees loaded successfully.
-98. Frontend Form Validation
+95. Frontend Form Validation
 
 Forms should validate:
 
@@ -1858,7 +1825,7 @@ Backend
 
 Backend validation is authoritative.
 
-99. Task Deadline Validation
+96. Task Deadline Validation
 
 A task deadline should not normally be allowed to be in the past when creating a new task.
 
@@ -1879,7 +1846,7 @@ Deadline:
 
 should be rejected for a newly created task.
 
-100. Attendance Rules
+97. Attendance Rules
 
 Recommended rules:
 
@@ -1891,7 +1858,7 @@ Cannot start a second break while
 another break is active.
 
 Cannot clock out while a break is active.
-101. Salary Access Rules
+98. Salary Access Rules
 
 Admin:
 
@@ -1910,7 +1877,7 @@ Change salary
 Change bonus
 Change deductions
 Change payment status
-102. Notification Rules
+99. Notification Rules
 
 Admin can send:
 
@@ -1928,7 +1895,7 @@ Mark as read
 
 Employee cannot create admin notifications.
 
-103. Work Review Rules
+100. Work Review Rules
 
 Only Admin can review employee submissions.
 
@@ -1943,12 +1910,12 @@ Employee actions:
 SUBMIT
 RESUBMIT
 VIEW FEEDBACK
-104. Code Quality
+101. Code Quality
 
 Backend should follow:
 
 PEP 8
-
+102.Check details
 Use:
 
 Clear variable names
@@ -1959,7 +1926,7 @@ Reusable utilities
 Proper comments
 Type hints where appropriate
 Meaningful exceptions
-
+103.Check
 Frontend should follow:
 
 Functional components
@@ -1969,12 +1936,12 @@ Avoid duplicated API logic
 Centralized Axios configuration
 Context API for authentication
 Consistent naming
-105. Naming Conventions
+104. Naming Conventions
 
 Python:
 
 snake_case
-
+105.Details
 Example:
 
 employee_id
@@ -2221,19 +2188,17 @@ Follow this sequence strictly:
         |
 11. Attendance
         |
-12. Break Management
+12. Salary
         |
-13. Salary
+13. Notifications
         |
-14. Notifications
+14. Reports
         |
-15. Reports
+15. Dashboard Charts
         |
-16. Dashboard Charts
+16  Testing
         |
-17. Testing
-        |
-18. Deployment
+17. Deployment
 117. Final Application Flow
 
 Complete system:
@@ -2259,10 +2224,10 @@ Complete system:
        TASKS                                     ATTENDANCE
           |                                          |
           v                                          v
-    ATTENDANCE                                    BREAKS
-          |                                          |
+    ATTENDANCE                                   
+          |                                   
           v                                          v
-       BREAKS                                      SALARY
+                                                    SALARY
           |                                          |
           v                                          v
        SALARY                                  NOTIFICATIONS
@@ -2320,12 +2285,11 @@ CORS
 Gunicorn
 Production configuration
 119. Interview Explanation
-
-If asked to explain the project:
+About  project:
 
 Employee Work Management System is a full-stack enterprise-style application developed using Django REST Framework, React.js and MySQL. The system provides separate Admin and Employee roles using JWT authentication and role-based permissions.
 
-Admins can manage employees, assign tasks, manage attendance, view breaks, manage salaries, review employee work, send notifications and generate reports.
+Admins can manage employees, assign tasks, manage attendance,  manage salaries, review employee work, send notifications and generate reports.
 
 Employees can manage their attendance and breaks, view assigned tasks, update task status, submit completed work, view feedback, salary and notifications.
 
@@ -2354,7 +2318,7 @@ Activity tracking
 Two-factor authentication
 Cloud file storage
 Automated report generation
-PDF reports
+
 Mobile application
 PWA support
 121. Final Architecture
@@ -2400,7 +2364,6 @@ Current system modules:
 [x] Feedback
 [x] Notifications
 [x] Attendance
-[x] Break Management
 [x] Salary Management
 [x] Employee Dashboard
 [x] Admin Dashboard
