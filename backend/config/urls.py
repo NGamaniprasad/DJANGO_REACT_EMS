@@ -30,10 +30,10 @@ path(
         include("breaks.urls"),
     ),
 
-    path(
-        "api/",
-        include("work_reviews.urls"),
-    ),
+    # path(
+    #     "api/",
+    #     include("work_reviews.urls"),
+    # ),
 
     path(
         "api/",
