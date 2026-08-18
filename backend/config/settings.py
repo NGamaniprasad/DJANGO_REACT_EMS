@@ -113,7 +113,7 @@ INSTALLED_APPS = [
     "tasks",
     "attendance",
     "breaks",
-    "work_reviews",
+    # "work_reviews",
     "salaries",
     "notifications",
 ]
