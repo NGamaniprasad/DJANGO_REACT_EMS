@@ -34,7 +34,7 @@ import EmployeeTaskSubmission from "../pages/employee/EmployeeTaskSubmission";
 import EmployeeAttendance from "../pages/employee/EmployeeAttendance";
 import EmployeeSalary from "../pages/employee/EmployeeSalary";
 import EmployeeNotifications from "../pages/employee/EmployeeNotifications";
-
+import Unauthorized from "../pages/Unauthorized";
 
 /* ================================= */
 /* PROTECTED ROUTE */
@@ -103,13 +103,13 @@ function AdminRoute({ children }) {
     }
 
     if (user.role !== "ADMIN") {
-        return (
-            <Navigate
-                to="/employee/dashboard"
-                replace
-            />
-        );
-    }
+    return (
+        <Navigate
+            to="/unauthorized"
+            replace
+        />
+    );
+}
 
     return children;
 }
@@ -325,7 +325,10 @@ function AppRoutes() {
                     }
                 />
 
-
+<Route
+    path="/unauthorized"
+    element={<Unauthorized />}
+/>
                 {/* ========================= */}
                 {/* UNKNOWN ROUTE */}
                 {/* ========================= */}

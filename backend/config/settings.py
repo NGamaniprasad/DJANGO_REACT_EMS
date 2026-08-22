@@ -35,6 +35,71 @@ SECRET_KEY = os.getenv(
     "unsafe-development-key",
 )
 
+AUTH_USER_MODEL = 'accounts.User'
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+    ],
+    "DEFAULT_PAGINATION_CLASS": (
+        "core.pagination.StandardPagination"
+    ),
+    "PAGE_SIZE": 20,
+    "EXCEPTION_HANDLER": (
+        "core.exceptions.custom_exception_handler"
+    ),
+}
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        (
+            "rest_framework_simplejwt.authentication"
+            ".JWTAuthentication"
+        ),
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+    ],
+    "DEFAULT_PAGINATION_CLASS": (
+        "core.pagination.StandardPagination"
+    ),
+    "PAGE_SIZE": 20,
+    "EXCEPTION_HANDLER": (
+        "core.exceptions.custom_exception_handler"
+    ),
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+
+    "UPDATE_LAST_LOGIN": True,
+
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+
 DEBUG = os.getenv(
     "DJANGO_DEBUG",
     os.getenv("DEBUG", "False")
