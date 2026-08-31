@@ -1,4 +1,35 @@
+
+import { useState } from "react";
+
 function Contact() {
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mkjnojeg", {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
+
   return (
     <div
       style={{
@@ -25,14 +56,12 @@ function Contact() {
 
       <main
         style={{
-          maxWidth: "1000px",
+          maxWidth: "700px",
           margin: "0 auto",
           padding: "70px 30px",
         }}
       >
-        <h1 style={{ color: "#1e293b" }}>
-          Contact Us
-        </h1>
+        <h1 style={{ color: "#1e293b" }}>Contact Us</h1>
 
         <p
           style={{
@@ -41,12 +70,12 @@ function Contact() {
             fontSize: "17px",
           }}
         >
-          If you have questions, require assistance, or need support
-          with the Employee Work Management System, please contact
-          the Gamani Solutions team.
+          Have a question or need support? Send us a message and
+          our team will get back to you.
         </p>
 
-        <div
+        <form
+          onSubmit={handleSubmit}
           style={{
             background: "#ffffff",
             padding: "30px",
@@ -55,22 +84,124 @@ function Contact() {
             border: "1px solid #e2e8f0",
           }}
         >
-          <h3 style={{ color: "#1e3a8a" }}>
-            Support
-          </h3>
+          <label
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Name
+          </label>
 
-          <p style={{ color: "#475569" }}>
-            Email: support@gamanisolutions.com
-          </p>
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Enter your name"
+            style={{
+              width: "100%",
+              padding: "12px",
+              marginBottom: "20px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "8px",
+              boxSizing: "border-box",
+            }}
+          />
 
-          <p style={{ color: "#475569" }}>
-            Phone: +91 XXXXX XXXXX
-          </p>
+          <label
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Email
+          </label>
 
-          <p style={{ color: "#475569" }}>
-            Working Hours: Monday - Friday, 9:00 AM - 6:00 PM
-          </p>
-        </div>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+            style={{
+              width: "100%",
+              padding: "12px",
+              marginBottom: "20px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "8px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          <label
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Message
+          </label>
+
+          <textarea
+            name="message"
+            required
+            rows="6"
+            placeholder="Enter your message"
+            style={{
+              width: "100%",
+              padding: "12px",
+              marginBottom: "20px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "8px",
+              boxSizing: "border-box",
+              resize: "vertical",
+            }}
+          />
+
+          <button
+            type="submit"
+            style={{
+              background: "#1e3a8a",
+              color: "#ffffff",
+              border: "none",
+              padding: "12px 25px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "16px",
+            }}
+          >
+            Send Message
+          </button>
+
+          {status === "success" && (
+            <p
+              style={{
+                marginTop: "20px",
+                color: "#16a34a",
+                fontWeight: "bold",
+              }}
+            >
+              ✓ Message sent successfully!
+            </p>
+          )}
+
+          {status === "error" && (
+            <p
+              style={{
+                marginTop: "20px",
+                color: "#dc2626",
+                fontWeight: "bold",
+              }}
+            >
+              ✕ Something went wrong. Please try again.
+            </p>
+          )}
+        </form>
       </main>
 
       <footer
@@ -88,3 +219,4 @@ function Contact() {
 }
 
 export default Contact;
+
