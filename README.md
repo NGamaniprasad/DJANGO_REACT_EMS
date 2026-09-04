@@ -2,7 +2,7 @@
 
 ## Gamani Solutions
 
-A production-oriented **Employee Work Management System** built using **Django REST Framework, React.js, MySQL, JWT Authentication, and Render**.
+A production-oriented **Employee Work Management System** built using **Django REST Framework, React.js, MySQL, JWT Authentication**.
 
 The system is designed to help organizations manage employees, tasks, attendance, salary, work submissions, reviews, notifications, reports, and employee performance from a centralized platform.
 
@@ -50,10 +50,7 @@ The main objectives of the system are:
 - Manage salary information
 - Manage performance bonuses
 - Review completed employee work
-- Provide feedback
 - Send employee notifications
-- Generate reports
-- Display dashboard analytics
 - Provide secure role-based access
 - Provide a professional responsive UI
 
@@ -87,7 +84,6 @@ Admin can:
 - View task progress
 - View attendance
 - View monthly attendance
-- View break history
 - Manage salary
 - Add salary
 - Update salary
@@ -95,7 +91,6 @@ Admin can:
 - Review employee submissions
 - Approve completed work
 - Reject completed work
-- Send feedback
 - Send notifications
 
 ---
@@ -160,7 +155,7 @@ PENDING REVIEW
                        v
                   RESUBMIT WORK
 
-7. Work Submission Workflow
+# 7. Work Submission Workflow
 
 Admin creates task
         |
@@ -189,7 +184,7 @@ Admin reviews submission
  permanently        feedback and resubmits
 
 
-8. Attendance Workflow
+# 8. Attendance Workflow
 
 Employees can manage their attendance.
 
@@ -211,7 +206,7 @@ Attendance Completed
 
 
 
-0. Salary Management
+# 9. Salary Management
 
 Admin can manage employee salary records.
 
