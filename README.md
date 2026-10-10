@@ -2443,6 +2443,19 @@ http://localhost:5173
 
 Backend:
 http://127.0.0.1:8000
+
+## SCREEN SHOTS:
+-- Home page
+<img width="640" height="334" alt="em1" src="https://github.com/user-attachments/assets/c4dfe868-a2f1-4537-a540-690eb7841baf" />
+-- Employee Dashboard
+<img width="640" height="340" alt="em2" src="https://github.com/user-attachments/assets/637bd70e-fabb-4bc3-b88b-fe2848789151" />
+
+--Admin Dashboard
+<img width="640" height="338" alt="em3" src="https://github.com/user-attachments/assets/560e43d4-b065-4169-a263-f3695fc4b4c8" />
+
+
+
+
 127. End-to-End Summary
 Admin creates employee
         |
